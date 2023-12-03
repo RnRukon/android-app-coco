@@ -4,10 +4,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScopeInstance.align
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -45,7 +49,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-@Preview()
+
 @Composable
 fun Greeting( modifier: Modifier = Modifier) {
    Column(modifier= modifier
@@ -149,29 +153,113 @@ fun Greeting( modifier: Modifier = Modifier) {
 
 }
 
-
+@Preview()
 @Composable
 fun LoginPage(){
 Column(
     modifier= Modifier
         .fillMaxHeight()
         .fillMaxWidth()
-        .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 11.dp)),
-    horizontalAlignment = Alignment.CenterHorizontally
+        .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 11.dp))
 
-
+    ,
 ) {
 
-Spacer(modifier = Modifier.padding(top = 43.dp))
-    Image(
-        painter = painterResource(id = R.drawable.coco_image_start_page),
-        contentDescription = "image description",
-        contentScale = ContentScale.FillBounds,
-        modifier= Modifier
-            .width(243.dp)
-            .height(243.dp),
-    )
+
+    Box(modifier = Modifier.fillMaxWidth()){
+        Image(
+            painter = painterResource(id = R.drawable.ellipse_23),
+            contentDescription = "image description",
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .height(148.dp)
+                .width(300.dp)
+                .align(Alignment.TopEnd)
+        )
+        Image(
+            painter = painterResource(id = R.drawable.ellipse_22),
+            contentDescription = "image description",
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .height(300.dp)
+                .width(100.dp)
+                .align(Alignment.TopEnd)
+                .clip(
+                    RoundedCornerShape(topEnd = 40.dp)
+                )
+        )
+        Image(
+            painter = painterResource(id = R.drawable.coco_image_start_page),
+            contentDescription = "image description",
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .width(243.dp)
+                .height(243.dp)
+                .align(Alignment.BottomCenter)
+
+            ,
+
+            )
+    }
+
+    Column(modifier=Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+Box(modifier= Modifier
+    .width(318.dp)
+    .height(45.dp)
+    .background(color = Color(0xFF5AB198), shape = RoundedCornerShape(size = 4.dp))){
+      Text(
+          text = "LOGON",
+          modifier = Modifier
+              .align(Alignment.Center)
+              ,
+          style = TextStyle(
+              fontSize = 25.sp,
+              fontWeight = FontWeight(500),
+              color = Color(0xFF000000),  )
+      )
+}
+
+        Text(
+            text = "or connect with",
+            style = TextStyle(
+                fontSize = 25.sp,
+                fontWeight = FontWeight(400),
+                color = Color(0xFF747070),
+            )
+        )
+
+        Box(modifier = Modifier
+            .width(318.dp)
+            .height(45.dp)
+            .background(color = Color(0xFF5AB198), shape = RoundedCornerShape(size = 4.dp))){
+
+  Row(modifier = Modifier.align(Alignment.Center)) {
+      Image(painter = painterResource(
+          id = R.drawable.google_1),
+          contentDescription = null,
+          modifier = Modifier
+              .width(30.dp)
+
+              .align(Alignment.CenterVertically)
+      )
+      Text(
+          text = "Login with Google",
+
+          style = TextStyle(
+              fontSize = 20.sp,
+              fontWeight = FontWeight(400),
+              color = Color(0xFF000000),   )
+      )
+  }
+        }
+  }
 
 }
+    Image(painter = painterResource(
+        id = R.drawable.good_doggy_bro_1),
+        contentDescription =null ,
+        modifier = Modifier.fillMaxSize()
+        )
 }
+
 
